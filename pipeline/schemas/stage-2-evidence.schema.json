@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.dsh/pipeline/stage-2-evidence.schema.json",
+  "title": "Stage 2 Evidence and Workflow Assessments",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "stage_1_artifact_sha256", "document_catalog", "assessments"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "case_id": {"type": "string", "minLength": 1},
+    "stage_1_artifact_sha256": {"type": "string", "minLength": 64, "maxLength": 64},
+    "document_catalog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["document_id", "path", "sha256", "media_type", "scope_note"],
+        "properties": {
+          "document_id": {"type": "string"},
+          "path": {"type": "string"},
+          "sha256": {"type": "string"},
+          "media_type": {"type": "string"},
+          "scope_note": {"type": "string"}
+        }
+      }
+    },
+    "assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["item_id", "digital_status", "process_narrative", "unresolved_questions", "systems", "evidence_refs", "inference_notes", "human_additions", "status"],
+        "properties": {
+          "item_id": {"type": "string"},
+          "digital_status": {"enum": ["有", "无", "待确认", "不纳入本次梳理范畴"]},
+          "process_narrative": {"type": "string"},
+          "unresolved_questions": {"type": "array", "items": {"type": "string"}},
+          "systems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["name", "number", "support_strength", "source_type"],
+              "properties": {
+                "name": {"type": "string"},
+                "number": {"type": ["string", "null"]},
+                "support_strength": {"enum": ["direct", "strong", "candidate"]},
+                "source_type": {"enum": ["document", "human"]}
+              }
+            }
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["evidence_id", "document_id", "locator", "quote", "supports", "strength"],
+              "properties": {
+                "evidence_id": {"type": "string"},
+                "document_id": {"type": "string"},
+                "locator": {"type": "string"},
+                "quote": {"type": "string"},
+                "supports": {"type": "array", "items": {"type": "string"}},
+                "strength": {"enum": ["direct", "inferred", "context-only"]}
+              }
+            }
+          },
+          "inference_notes": {"type": "array", "items": {"type": "string"}},
+          "human_additions": {"type": "array", "items": {"type": "string"}},
+          "status": {"enum": ["draft", "reviewed", "approved", "rejected"]}
+        }
+      }
+    }
+  }
+}
