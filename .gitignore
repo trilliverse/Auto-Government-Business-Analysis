@@ -1,0 +1,31 @@
+# Real case inputs, generated evidence indexes, and deliverables
+/example/
+/reference-materials/
+/workcases/
+*.zip
+
+# Runtime-local installation metadata
+/distribution/gov-pipeline/pipeline-root.txt
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+~$*
+.~*
+._*
+
+# Temporary and generated test homes
+.tmp-*/
+*.log
+
+# Credentials and environment
+.env
+.env.*
+!.env.example

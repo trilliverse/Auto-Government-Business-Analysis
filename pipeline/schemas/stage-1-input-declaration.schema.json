@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.dsh/pipeline/stage-1-input-declaration.schema.json",
+  "title": "Stage 1 Human Input Declaration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "input_version", "responsibility_source", "scope", "special_rules", "method_guide_required", "status"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "case_id": {"type": "string", "minLength": 1},
+    "input_version": {"type": "integer", "minimum": 1},
+    "responsibility_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_type", "authority_status", "effective_date", "notes"],
+      "properties": {
+        "source_type": {"enum": ["formal-three-determinations", "official-adjustment", "working-sheet-copy", "other"]},
+        "authority_status": {"enum": ["verified", "not-verified", "conflicting"]},
+        "effective_date": {"type": ["string", "null"]},
+        "notes": {"type": "string"}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "included_responsibility_ids", "excluded_responsibility_ids", "notes"],
+      "properties": {
+        "mode": {"enum": ["all", "include-list", "exclude-list"]},
+        "included_responsibility_ids": {"type": "array", "items": {"type": "string"}},
+        "excluded_responsibility_ids": {"type": "array", "items": {"type": "string"}},
+        "notes": {"type": "string"}
+      }
+    },
+    "special_rules": {"type": "array", "items": {"type": "string"}},
+    "method_guide_required": {"const": false},
+    "status": {"enum": ["pending-human-confirmation", "confirmed"]},
+    "confirmed_by": {"type": ["string", "null"]},
+    "confirmed_at": {"type": ["string", "null"]}
+  }
+}

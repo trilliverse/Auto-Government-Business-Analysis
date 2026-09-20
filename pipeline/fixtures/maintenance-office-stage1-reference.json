@@ -1,0 +1,247 @@
+{
+  "schema_version": "0.1.0",
+  "case_id": "maintenance-office-demo",
+  "purpose": "stage-1-human-reviewed-reference",
+  "source": {
+    "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\example\\养护处梳理结果实例.xlsx",
+    "filename": "养护处梳理结果实例.xlsx",
+    "sheet": "三定方案业务梳理"
+  },
+  "statistics": {
+    "responsibility_count": 7,
+    "item_count": 20,
+    "category_counts": {
+      "参与": 4,
+      "待确认": 0,
+      "督导": 9,
+      "组织": 0,
+      "负责": 7
+    }
+  },
+  "items": [
+    {
+      "reference_item_id": "REF-I001",
+      "source_responsibility_id": "REF-R001",
+      "source_responsibility_text": "（一）贯彻执行国家和省有关公路养护管理方面的方针、政策和法律法规，参与拟订相关的规章制度并督促落实；",
+      "source_sequence": 1,
+      "item_sequence": 1,
+      "department_name": "养护技术服务处",
+      "item_text": "贯彻执行国家和省有关公路养护管理方面的方针、政策和法律法规",
+      "category": "负责",
+      "source_row": 2
+    },
+    {
+      "reference_item_id": "REF-I002",
+      "source_responsibility_id": "REF-R001",
+      "source_responsibility_text": "（一）贯彻执行国家和省有关公路养护管理方面的方针、政策和法律法规，参与拟订相关的规章制度并督促落实；",
+      "source_sequence": 1,
+      "item_sequence": 2,
+      "department_name": "养护技术服务处",
+      "item_text": "参与拟订相关的规章制度",
+      "category": "参与",
+      "source_row": 3
+    },
+    {
+      "reference_item_id": "REF-I003",
+      "source_responsibility_id": "REF-R001",
+      "source_responsibility_text": "（一）贯彻执行国家和省有关公路养护管理方面的方针、政策和法律法规，参与拟订相关的规章制度并督促落实；",
+      "source_sequence": 1,
+      "item_sequence": 3,
+      "department_name": "养护技术服务处",
+      "item_text": "督促落实相关的规章制度",
+      "category": "督导",
+      "source_row": 4
+    },
+    {
+      "reference_item_id": "REF-I004",
+      "source_responsibility_id": "REF-R002",
+      "source_responsibility_text": "（二）承担编制全省公路养护管理发展纲要、国省干线公路养护工程项目备案、计划、绩效考核等事务性工作；",
+      "source_sequence": 2,
+      "item_sequence": 1,
+      "department_name": "养护技术服务处",
+      "item_text": "承担编制全省公路养护管理发展纲要事务性工作",
+      "category": "负责",
+      "source_row": 5
+    },
+    {
+      "reference_item_id": "REF-I005",
+      "source_responsibility_id": "REF-R002",
+      "source_responsibility_text": "（二）承担编制全省公路养护管理发展纲要、国省干线公路养护工程项目备案、计划、绩效考核等事务性工作；",
+      "source_sequence": 2,
+      "item_sequence": 2,
+      "department_name": "养护技术服务处",
+      "item_text": "承担国省干线公路养护工程项目备案事务性工作",
+      "category": "督导",
+      "source_row": 6
+    },
+    {
+      "reference_item_id": "REF-I006",
+      "source_responsibility_id": "REF-R002",
+      "source_responsibility_text": "（二）承担编制全省公路养护管理发展纲要、国省干线公路养护工程项目备案、计划、绩效考核等事务性工作；",
+      "source_sequence": 2,
+      "item_sequence": 3,
+      "department_name": "养护技术服务处",
+      "item_text": "承担国省干线公路养护工程项目计划事务性工作",
+      "category": "负责",
+      "source_row": 7
+    },
+    {
+      "reference_item_id": "REF-I007",
+      "source_responsibility_id": "REF-R002",
+      "source_responsibility_text": "（二）承担编制全省公路养护管理发展纲要、国省干线公路养护工程项目备案、计划、绩效考核等事务性工作；",
+      "source_sequence": 2,
+      "item_sequence": 4,
+      "department_name": "养护技术服务处",
+      "item_text": "承担国省干线公路养护工程项目绩效考核等事务性工作",
+      "category": "督导",
+      "source_row": 8
+    },
+    {
+      "reference_item_id": "REF-I008",
+      "source_responsibility_id": "REF-R003",
+      "source_responsibility_text": "（三）承担指导国省干线公路养护管理、路网运行监测事务性工作；",
+      "source_sequence": 3,
+      "item_sequence": 1,
+      "department_name": "养护技术服务处",
+      "item_text": "承担指导国省干线公路养护管理事务性工作",
+      "category": "督导",
+      "source_row": 9
+    },
+    {
+      "reference_item_id": "REF-I009",
+      "source_responsibility_id": "REF-R003",
+      "source_responsibility_text": "（三）承担指导国省干线公路养护管理、路网运行监测事务性工作；",
+      "source_sequence": 3,
+      "item_sequence": 2,
+      "department_name": "养护技术服务处",
+      "item_text": "承担指导国省干线公路路网运行监测事务性工作",
+      "category": "督导",
+      "source_row": 10
+    },
+    {
+      "reference_item_id": "REF-I010",
+      "source_responsibility_id": "REF-R004",
+      "source_responsibility_text": "（四）承担国省干线公路技术状况监测、交通流量调查、养护相关统计等事务性工作；",
+      "source_sequence": 4,
+      "item_sequence": 1,
+      "department_name": "养护技术服务处",
+      "item_text": "承担国省干线公路技术状况监测事务性工作",
+      "category": "负责",
+      "source_row": 11
+    },
+    {
+      "reference_item_id": "REF-I011",
+      "source_responsibility_id": "REF-R004",
+      "source_responsibility_text": "（四）承担国省干线公路技术状况监测、交通流量调查、养护相关统计等事务性工作；",
+      "source_sequence": 4,
+      "item_sequence": 2,
+      "department_name": "养护技术服务处",
+      "item_text": "承担国省干线公路交通流量调查事务性工作",
+      "category": "负责",
+      "source_row": 12
+    },
+    {
+      "reference_item_id": "REF-I012",
+      "source_responsibility_id": "REF-R004",
+      "source_responsibility_text": "（四）承担国省干线公路技术状况监测、交通流量调查、养护相关统计等事务性工作；",
+      "source_sequence": 4,
+      "item_sequence": 3,
+      "department_name": "养护技术服务处",
+      "item_text": "承担国省干线公路养护相关统计等事务性工作",
+      "category": "负责",
+      "source_row": 13
+    },
+    {
+      "reference_item_id": "REF-I013",
+      "source_responsibility_id": "REF-R005",
+      "source_responsibility_text": "（五）承担公路养护资质审批的事务性工作；",
+      "source_sequence": 5,
+      "item_sequence": 1,
+      "department_name": "养护技术服务处",
+      "item_text": "承担公路养护资质审批的事务性工作",
+      "category": "负责",
+      "source_row": 14
+    },
+    {
+      "reference_item_id": "REF-I014",
+      "source_responsibility_id": "REF-R006",
+      "source_responsibility_text": "（六）承担指导国省干线公路风险隐患排查整治、应急保通、应急体系建设和养护作业安全生产事务性工作；",
+      "source_sequence": 6,
+      "item_sequence": 1,
+      "department_name": "养护技术服务处",
+      "item_text": "承担指导国省干线公路风险隐患排查整治事务性工作",
+      "category": "督导",
+      "source_row": 15
+    },
+    {
+      "reference_item_id": "REF-I015",
+      "source_responsibility_id": "REF-R006",
+      "source_responsibility_text": "（六）承担指导国省干线公路风险隐患排查整治、应急保通、应急体系建设和养护作业安全生产事务性工作；",
+      "source_sequence": 6,
+      "item_sequence": 2,
+      "department_name": "养护技术服务处",
+      "item_text": "承担指导国省干线公路应急保通事务性工作",
+      "category": "督导",
+      "source_row": 16
+    },
+    {
+      "reference_item_id": "REF-I016",
+      "source_responsibility_id": "REF-R006",
+      "source_responsibility_text": "（六）承担指导国省干线公路风险隐患排查整治、应急保通、应急体系建设和养护作业安全生产事务性工作；",
+      "source_sequence": 6,
+      "item_sequence": 3,
+      "department_name": "养护技术服务处",
+      "item_text": "承担指导国省干线公路应急体系建设事务性工作",
+      "category": "督导",
+      "source_row": 17
+    },
+    {
+      "reference_item_id": "REF-I017",
+      "source_responsibility_id": "REF-R006",
+      "source_responsibility_text": "（六）承担指导国省干线公路风险隐患排查整治、应急保通、应急体系建设和养护作业安全生产事务性工作；",
+      "source_sequence": 6,
+      "item_sequence": 4,
+      "department_name": "养护技术服务处",
+      "item_text": "承担指导国省干线公路养护作业安全生产事务性工作",
+      "category": "督导",
+      "source_row": 18
+    },
+    {
+      "reference_item_id": "REF-I018",
+      "source_responsibility_id": "REF-R007",
+      "source_responsibility_text": "（七）参与国省干线公路养护造价、养护市场管理及信用体系建设等事务性工作；",
+      "source_sequence": 7,
+      "item_sequence": 1,
+      "department_name": "养护技术服务处",
+      "item_text": "参与国省干线公路养护造价事务性工作",
+      "category": "参与",
+      "source_row": 19
+    },
+    {
+      "reference_item_id": "REF-I019",
+      "source_responsibility_id": "REF-R007",
+      "source_responsibility_text": "（七）参与国省干线公路养护造价、养护市场管理及信用体系建设等事务性工作；",
+      "source_sequence": 7,
+      "item_sequence": 2,
+      "department_name": "养护技术服务处",
+      "item_text": "参与国省干线公路养护市场管理事务性工作",
+      "category": "参与",
+      "source_row": 20
+    },
+    {
+      "reference_item_id": "REF-I020",
+      "source_responsibility_id": "REF-R007",
+      "source_responsibility_text": "（七）参与国省干线公路养护造价、养护市场管理及信用体系建设等事务性工作；",
+      "source_sequence": 7,
+      "item_sequence": 3,
+      "department_name": "养护技术服务处",
+      "item_text": "参与国省干线公路信用体系建设等事务性工作",
+      "category": "参与",
+      "source_row": 21
+    }
+  ],
+  "limitations": [
+    "该工作簿是人工核验后的后续阶段成果，仅作为 Stage 1 回归参考，不反向替代原始职责。",
+    "该参考集已合并方针政策与法律法规事项，并排除了领导交办事项，因此预期为 7 条来源职责、20 条事项。"
+  ]
+}
