@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$CaseId = 'cold-start-acceptance',
     [switch]$KeepCase
 )

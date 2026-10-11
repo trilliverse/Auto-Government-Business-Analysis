@@ -1,4 +1,4 @@
-param([string]$DshHome)
+﻿param([string]$DshHome)
 . (Join-Path $PSScriptRoot 'preset-common.ps1')
 $ctx = Get-GovPipelineContext -DshHome $DshHome
 Assert-GovPipelineSource $ctx
@@ -17,8 +17,8 @@ $compositionPath = Join-Path $ctx.Target 'agent.cordis.yml'
 $skillsPath = (Join-Path $ctx.Target 'skills').Replace('\','/')
 $composition = Get-Content -LiteralPath $compositionPath -Raw -Encoding UTF8
 $composition = $composition.Replace('__GOV_PIPELINE_SKILLS_DIR__', $skillsPath)
-Set-Content -LiteralPath $compositionPath -Value $composition -Encoding UTF8
-Set-Content -LiteralPath (Join-Path $ctx.Target 'pipeline-root.txt') -Value $ctx.RepoRoot -Encoding UTF8
+Set-TextFileUtf8NoBom -Path $compositionPath -Value $composition
+Set-TextFileUtf8NoBom -Path (Join-Path $ctx.Target 'pipeline-root.txt') -Value $ctx.RepoRoot
 Write-Output "更新成功：$($ctx.Target)"
 Write-Output "备份目录：$backup"
 Write-Output '此操作不修改任何案件目录。请新建会话以使用更新后的 Preset。'

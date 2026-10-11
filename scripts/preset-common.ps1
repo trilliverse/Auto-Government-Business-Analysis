@@ -1,4 +1,4 @@
-Set-StrictMode -Version Latest
+﻿Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 function Get-GovPipelineContext {
@@ -20,6 +20,11 @@ function Assert-GovPipelineSource {
         $path = Join-Path $Context.Source $relative
         if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw "缺少发布源文件：$path" }
     }
+}
+
+function Set-TextFileUtf8NoBom {
+    param([string]$Path, [string]$Value)
+    [System.IO.File]::WriteAllText($Path, $Value, (New-Object System.Text.UTF8Encoding($false)))
 }
 
 function Get-TreeDigest {

@@ -1,4 +1,4 @@
-param([string]$DshHome)
+﻿param([string]$DshHome)
 . (Join-Path $PSScriptRoot 'preset-common.ps1')
 $ctx = Get-GovPipelineContext -DshHome $DshHome
 $checks = [System.Collections.Generic.List[object]]::new()

@@ -1,4 +1,4 @@
-param(
+﻿param(
     [string]$DshHome,
     [switch]$KeepBackup
 )

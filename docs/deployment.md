@@ -13,6 +13,8 @@ Git/内网代码仓库保存程序源代码、Preset、Skills、Schema、测试�
 .\scripts\install.ps1
 ```
 
+脚本兼容 Windows PowerShell 5.1 和 PowerShell 7（已内置 UTF-8 BOM，中文系统无需手动切换代码页）。
+
 默认安装到：
 
 ```text
