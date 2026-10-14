@@ -6,6 +6,9 @@
 
 # Runtime-local installation metadata
 /distribution/gov-pipeline/pipeline-root.txt
+# Machine-bound bundle patch: regenerate with scripts/install.ps1
+/distribution/gov-pipeline/cordis.patch.yml
+/.runtime-inspect/
 
 # Python
 __pycache__/

@@ -1,21 +1,5 @@
-﻿param(
-    [string]$DshHome,
-    [switch]$KeepBackup
-)
-. (Join-Path $PSScriptRoot 'preset-common.ps1')
-$ctx = Get-GovPipelineContext -DshHome $DshHome
-if (-not (Test-Path -LiteralPath $ctx.Target -PathType Container)) {
-    Write-Output "Preset 未安装，无需卸载：$($ctx.Target)"
-    exit 0
-}
-if ($KeepBackup) {
-    $backupRoot = Join-Path $ctx.DshHome '.agent-presets-backup'
-    New-Item -ItemType Directory -Force -Path $backupRoot | Out-Null
-    $backup = Join-Path $backupRoot "gov-pipeline-uninstall-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
-    Move-Item -LiteralPath $ctx.Target -Destination $backup
-    Write-Output "Preset 已移至备份：$backup"
-} else {
-    Remove-Item -LiteralPath $ctx.Target -Recurse -Force
-    Write-Output "Preset 已删除：$($ctx.Target)"
-}
-Write-Output '案件目录和工作区文件未被删除。'
+param([string]$DshHome, [switch]$KeepBackup)
+$ErrorActionPreference = 'Stop'
+Write-Output '请在当前客户端的插件管理中移除 @local/gov-pipeline。'
+Write-Output '或由 Agent 调用 plugin_manager remove_bundle，target=@local/gov-pipeline。'
+Write-Output '此脚本不直接修改运行中的 profile；源文件、旧 .agent-presets 和业务案件均不删除。'

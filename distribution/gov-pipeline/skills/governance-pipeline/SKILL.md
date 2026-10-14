@@ -14,7 +14,7 @@ description: 在 DeepSeek Harness 中新建、恢复和逐阶段推进政务职�
 不要假设会话工作目录就是产品仓库。按以下顺序定位：
 
 1. 如果当前工作区存在 `pipeline/src/case_status.py`，使用当前工作区；
-2. 否则读取已安装 Preset 同目录的 `pipeline-root.txt`，得到产品仓库根目录；
+2. 否则使用预设系统提示提供的 governance Python pipeline repository root；也可读取技能目录上一级（bundle 根目录）的 `pipeline-root.txt`，得到产品仓库根目录；
 3. 验证该目录下存在 `pipeline/src/case_status.py` 和 `pipeline/src/audit_case.py`；
 4. 找不到时停止并提示管理员重新运行 `scripts/install.ps1` 或 `scripts/update.ps1`，不要猜路径。
 

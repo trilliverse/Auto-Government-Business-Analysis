@@ -1,0 +1,274 @@
+{
+  "time": "2026-10-14T03:32:32.932Z",
+  "presets": [
+    {
+      "id": "standard",
+      "order": 1
+    },
+    {
+      "id": "ptc",
+      "order": 2
+    },
+    {
+      "id": "minimal",
+      "order": 3
+    },
+    {
+      "id": "cordis",
+      "order": 4
+    },
+    {
+      "id": "gov-pipeline",
+      "name": "政务流程梳理",
+      "description": "面向政务职责、数字化支撑和业务流程梳理的半自动 Agent；使用版本化案件数据和人工审核闸门逐阶段推进。",
+      "order": 20
+    }
+  ],
+  "session": {
+    "sessionId": "session-c9b66a51-9d94-45e5-8d32-f186ba9e9ea3",
+    "agentPreset": "gov-pipeline"
+  },
+  "skills": [
+    {
+      "name": "diagnose-windows-sandbox-acl",
+      "description": "Use on Windows for unexpected DSH sandbox access denials: workspace writes or listing fail, or an ordinarily readable path cannot be read. One bundled command inspects the path and every ancestor and repairs the ACL problems it proves in that same run. Expected confinement denials need no ACL repair.",
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "source": "bundled",
+      "provider": "dsh-windows-acl",
+      "resourceBase": {
+        "kind": "directory",
+        "path": "C:\\Users\\Acref\\AppData\\Local\\Temp\\dsh-acl-skill-xKIAu3"
+      }
+    },
+    {
+      "name": "digital-support-analysis",
+      "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\digital-support-analysis\\SKILL.md",
+      "description": "基于 Gate 1 冻结事项和经过人工筛选的证据，生成数字化支撑判断、流程叙述、系统关联、证据分层和待确认问题的 Stage 2 草稿；不得把关键词候选或推导冒充直接证据。",
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "source": "bundled",
+      "provider": "filesystem",
+      "resourceBase": {
+        "kind": "directory",
+        "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\digital-support-analysis"
+      }
+    },
+    {
+      "name": "governance-pipeline",
+      "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\governance-pipeline\\SKILL.md",
+      "description": "在 DeepSeek Harness 中新建、恢复和逐阶段推进政务职责与数字化流程案件；先检查案件状态，按 Gate 0—3 调用对应 Skill 和确定性工具，任何 Gate 都必须由人明确放行。",
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "source": "bundled",
+      "provider": "filesystem",
+      "resourceBase": {
+        "kind": "directory",
+        "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\governance-pipeline"
+      }
+    },
+    {
+      "name": "office-docx",
+      "description": "Create, read, edit, and check Word documents (.docx), including reports, letters, and formatted tables. Use when a DOCX file is an input or requested deliverable. Load this skill before running Office commands. Use only bundled LibreOffice unless the user explicitly opts out; without that opt-out, do not search for another LibreOffice executable.",
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "source": "bundled",
+      "provider": "dsh-office",
+      "resourceBase": {
+        "kind": "directory",
+        "path": "D:\\DeepSeek Harness\\resources\\runtime\\office-skills\\office-docx"
+      }
+    },
+    {
+      "name": "office-pptx",
+      "description": "Create, read, edit, and check PowerPoint presentations (.pptx), including slide text, tables, images, and charts. Use when a PPTX file is an input or requested deliverable. Load this skill before running Office commands. Use only bundled LibreOffice unless the user explicitly opts out; without that opt-out, do not search for another LibreOffice executable.",
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "source": "bundled",
+      "provider": "dsh-office",
+      "resourceBase": {
+        "kind": "directory",
+        "path": "D:\\DeepSeek Harness\\resources\\runtime\\office-skills\\office-pptx"
+      }
+    },
+    {
+      "name": "office-xlsx",
+      "description": "Read, create, and modify Excel workbooks (.xlsx), including data, formulas, formatting, and pandas analysis. Use for Excel inputs or deliverables. Load before running Office commands. Data and formula tasks skip visual inspection; inspect only for formatting or layout needs. Use only bundled LibreOffice unless the user explicitly opts out; without that opt-out, do not search for another LibreOffice executable.",
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "source": "bundled",
+      "provider": "dsh-office",
+      "resourceBase": {
+        "kind": "directory",
+        "path": "D:\\DeepSeek Harness\\resources\\runtime\\office-skills\\office-xlsx"
+      }
+    },
+    {
+      "name": "responsibility-decomposition",
+      "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\responsibility-decomposition\\SKILL.md",
+      "description": "将已通过 Gate 0 的政府部门职责原文拆解为可追溯的原子事项并标注职能类型，生成 Stage 1 人工审核草稿；不得自行放行或覆盖批准版本。",
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "source": "bundled",
+      "provider": "filesystem",
+      "resourceBase": {
+        "kind": "directory",
+        "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\responsibility-decomposition"
+      }
+    },
+    {
+      "name": "swimlane-generation",
+      "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\swimlane-generation\\SKILL.md",
+      "description": "将 Gate 2 审核后的业务流程转为可审核的泳道逻辑模型，并在 Gate 3 通过后渲染多页 Draw.io；禁止把系统作为泳道或为闭环虚构节点。",
+      "invocation": {
+        "modelInvocable": true,
+        "userInvocable": true
+      },
+      "source": "bundled",
+      "provider": "filesystem",
+      "resourceBase": {
+        "kind": "directory",
+        "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\swimlane-generation"
+      }
+    }
+  ],
+  "loadedSkills": [
+    {
+      "name": "governance-pipeline",
+      "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\governance-pipeline\\SKILL.md",
+      "bytes": 1649
+    },
+    {
+      "name": "responsibility-decomposition",
+      "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\responsibility-decomposition\\SKILL.md",
+      "bytes": 2033
+    },
+    {
+      "name": "digital-support-analysis",
+      "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\digital-support-analysis\\SKILL.md",
+      "bytes": 1261
+    },
+    {
+      "name": "swimlane-generation",
+      "path": "E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline\\skills\\swimlane-generation\\SKILL.md",
+      "bytes": 651
+    }
+  ],
+  "tools": [
+    "load_workspace_dependencies",
+    "read",
+    "write",
+    "edit",
+    "glob",
+    "grep",
+    "job_output",
+    "job_list",
+    "job_kill",
+    "skill",
+    "get_goal",
+    "create_goal",
+    "update_goal",
+    "ask_user_question",
+    "todo_write",
+    "web_search",
+    "web_fetch",
+    "present",
+    "pwsh",
+    "read_image",
+    "exit_plan_mode",
+    "send_message",
+    "interrupt_agent",
+    "list_agents",
+    "subagent_fork",
+    "workflow",
+    "subagent"
+  ],
+  "python": {
+    "isError": true,
+    "error": {
+      "message": "SetNamedSecurityInfoW failed (Win32 5): grantWrite(E:\\scut\\Research\\江西交通运输数据治理\\dsh\\.tmp-gov-verification)"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Error: SetNamedSecurityInfoW failed (Win32 5): grantWrite(E:\\scut\\Research\\江西交通运输数据治理\\dsh\\.tmp-gov-verification)"
+      }
+    ]
+  },
+  "ok": true,
+  "permissionCatalog": {
+    "options": [
+      {
+        "value": "read-only",
+        "name": "read-only"
+      },
+      {
+        "value": "workspace-write",
+        "name": "workspace-write"
+      },
+      {
+        "value": "danger-full-access",
+        "name": "danger-full-access"
+      }
+    ],
+    "defaultOptions": [
+      {
+        "value": "read-only",
+        "name": "read-only"
+      },
+      {
+        "value": "workspace-write",
+        "name": "workspace-write"
+      },
+      {
+        "value": "danger-full-access",
+        "name": "danger-full-access"
+      }
+    ],
+    "defaultPreset": "workspace-write"
+  },
+  "testPermission": "danger-full-access",
+  "pythonFullAccess": {
+    "isError": false,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\r\n  \"case_id\": \"bundle-smoke-test\",\r\n  \"stage\": \"gate-0\",\r\n  \"status\": \"awaiting-input-review\",\r\n  \"next_actions\": [\r\n    \"确认 inputs/stage-1-input-declaration.json\",\r\n    \"记录 Gate 0 决定\"\r\n  ],\r\n  \"approved_artifacts\": {\r\n    \"stage_1_approved_artifact\": null,\r\n    \"stage_2_approved_artifact\": null,\r\n    \"stage_3_approved_artifact\": null\r\n  }\r\n}\r\n"
+      }
+    ],
+    "value": {
+      "kind": "foreground",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "aborted": false,
+      "timeoutMs": 120000,
+      "stdout": {
+        "text": "{\r\n  \"case_id\": \"bundle-smoke-test\",\r\n  \"stage\": \"gate-0\",\r\n  \"status\": \"awaiting-input-review\",\r\n  \"next_actions\": [\r\n    \"确认 inputs/stage-1-input-declaration.json\",\r\n    \"记录 Gate 0 决定\"\r\n  ],\r\n  \"approved_artifacts\": {\r\n    \"stage_1_approved_artifact\": null,\r\n    \"stage_2_approved_artifact\": null,\r\n    \"stage_3_approved_artifact\": null\r\n  }\r\n}\r\n",
+        "truncated": false
+      },
+      "stderr": {
+        "text": "",
+        "truncated": false
+      },
+      "sandbox": {
+        "mode": "danger-full-access",
+        "denied": false
+      }
+    }
+  }
+}

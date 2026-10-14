@@ -1,0 +1,9 @@
+{
+  "name": "@local/gov-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "政务流程梳理：四个 skills、版本化案件与人工审核闸门",
+  "files": ["cordis.patch.yml", "agent.cordis.yml", "preset.yml", "pipeline-root.txt", "skills"],
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
+  "peerDependencies": { "@deepseek-ai/dsh": ">=0.2.0-rc.2 <0.3.0" }
+}

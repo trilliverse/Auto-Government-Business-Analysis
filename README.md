@@ -40,7 +40,9 @@ python -m pip install -r requirements.txt
 .\scripts\doctor.ps1
 ```
 
-启动 DeepSeek Harness：
+以上脚本仅准备本地 bundle；随后在**当前客户端的插件管理**中安装本仓库 `distribution/gov-pipeline` 的绝对路径，安装后新建会话选择“政务流程梳理”。旧 `.agent-presets` 目录不再用于注册。具体步骤和本机沙箱权限验收说明见[部署指南](<docs/deployment.md>)。
+
+如需通过 CLI 启动 DeepSeek Harness：
 
 ```powershell
 dsh web

@@ -1,4 +1,4 @@
-﻿Set-StrictMode -Version Latest
+Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 function Get-GovPipelineContext {
@@ -9,9 +9,7 @@ function Get-GovPipelineContext {
         else { $DshHome = Join-Path $HOME '.dsh' }
     }
     $source = Join-Path $repoRoot 'distribution\gov-pipeline'
-    $presetRoot = Join-Path $DshHome '.agent-presets'
-    $target = Join-Path $presetRoot 'gov-pipeline'
-    [pscustomobject]@{ RepoRoot=$repoRoot; DshHome=$DshHome; Source=$source; PresetRoot=$presetRoot; Target=$target }
+    [pscustomobject]@{ RepoRoot=$repoRoot; DshHome=$DshHome; Source=$source }
 }
 
 function Assert-GovPipelineSource {

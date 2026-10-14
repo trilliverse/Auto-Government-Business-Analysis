@@ -1,83 +1,75 @@
-# 政务流程梳理 Agent 交付与部署
+# 政务流程梳理：本地 bundle 部署
 
-## 交付边界
+## 当前格式
 
-Git/内网代码仓库保存程序源代码、Preset、Skills、Schema、测试和脱敏案例。真实政务材料、审核记录和成果不进入公共仓库；它们保存在业务人员指定的受控工作区。
+已按 DeepSeek Harness **0.2.0-rc.2** 核对。旧 `.agent-presets/gov-pipeline/` 目录不再是当前客户端的注册入口。项目以 `@local/gov-pipeline` 本地 bundle 安装，通过 `dsh.bundle.patch` 插入 `@deepseek-ai/dsh-agent-preset` 声明，预设 ID 保持 `gov-pipeline`，显示名称保持“政务流程梳理”。不覆盖内置预设或全局权限策略。
 
-## 管理员安装
+工作流实现使用当前 `@deepseek-ai/dsh-workflow-ptc`，不再使用已经移除的 `@deepseek-ai/dsh-workflow-worker-thread`。其余插件已对照当前 standard 预设核对。
 
-在项目根目录运行：
+## 准备和安装
+
+在本仓库根目录运行：
 
 ```powershell
-.\scripts\doctor.ps1
 .\scripts\install.ps1
+.\scripts\doctor.ps1
 ```
 
-脚本兼容 Windows PowerShell 5.1 和 PowerShell 7（已内置 UTF-8 BOM，中文系统无需手动切换代码页）。
+准备脚本生成机器相关的 `distribution/gov-pipeline/cordis.patch.yml` 和 `pipeline-root.txt`，不会复制到旧预设目录，也不会直接修改运行中的 profile。
 
-默认安装到：
+然后在**当前客户端 → 插件管理 → 安装 bundle** 中输入 `distribution/gov-pipeline` 的完整绝对路径。例如本机：
 
 ```text
-${DSH_HOME:-$HOME/.dsh}/.agent-presets/gov-pipeline/
+E:\scut\Research\江西交通运输数据治理\dsh\distribution\gov-pipeline
 ```
 
-安装后重启或刷新 DeepSeek Harness，新建会话时选择“政务流程梳理”。不要修改 Harness 随附的 `standard`、`cordis` 等 Preset。
+也可请 Agent 调用：
 
-如果当前机器已存在同名 Preset：
+```json
+{"action":"install_bundle","target":"E:\\scut\\Research\\江西交通运输数据治理\\dsh\\distribution\\gov-pipeline"}
+```
+
+此 bundle 没有安装脚本和外部依赖下载。当前客户端以本地 link 安装；不要删除、移动仓库。目录移动后须重新准备并安装新路径。其他机器必须先运行准备脚本，不能直接复用本机生成的绝对路径。
+
+当前实时 profile 安装结果应为 `application: applied`。刷新预设选择界面后，新建会话选择“政务流程梳理”；已有会话可能仍保留旧预设修订。
+
+## 路径约定
+
+- `bundledSkillDir` 指向发布目录的 `skills` 绝对路径，包含四个 Skill。
+- 预设系统提示同时提供 Python pipeline **仓库根目录**和技能目录。
+- 总控 Skill 从系统提示或 bundle 根目录的 `pipeline-root.txt` 获取仓库根目录，并验证 `pipeline/src/case_status.py` 和 `audit_case.py`。
+- 脚本使用仓库绝对路径；案件仍存放于业务人员指定的工作区，不存入 bundle。
+- Python 可通过 `load_workspace_dependencies` 获取当前客户端自带解释器，或使用装好项目依赖的 Python。`case_status.py` 本身仅依赖标准库。
+
+## 更新和卸载
 
 ```powershell
 .\scripts\update.ps1
 ```
 
-更新会先备份旧 Preset，不触碰案件目录。卸载：
+更新重新生成 patch；在客户端重新启用 bundle 以确保重载，然后新建会话。若客户端仍保留旧模块，移除并重新安装本地 bundle。卸载在当前客户端插件管理中移除 `@local/gov-pipeline`，或调用：
 
-```powershell
-.\scripts\uninstall.ps1 -KeepBackup
+```json
+{"action":"remove_bundle","target":"@local/gov-pipeline"}
 ```
 
-## 离线和内网交付
+旧 `.agent-presets` 目录不再参与注册，可保留作备份。更新和卸载均不删除业务案件。
 
-可选方式：
+## 验证与权限说明
 
-1. 单位内部 GitLab/Gitea 仓库；
-2. 经审核的 ZIP 发布包；
-3. 内网制品库。
-
-业务数据应与程序仓库分离。示例材料进入发布包前必须脱敏并经授权。
-
-## 业务人员使用流程
-
-1. 在 Harness 新建会话，选择“政务流程梳理”；
-2. 指定新的案件工作目录；
-3. 上传或引用目标单位的职责来源材料，并说明纳入/排除范围和特殊口径；工作指引方法已经内置，无需每个案件重复上传；
-4. Agent 提取单位、处室和职责，生成 Gate 0 审核稿；
-5. 业务人员确认或提出修改；
-6. Agent 生成职责拆解草稿，业务人员完成 Gate 1；
-7. 从批准数据导出 Excel；
-8. 后续继续数字化支撑、证据流程和泳道图审核。
-
-业务人员无需操作 JSON、哈希或 Cordis 配置；这些用于后台版本控制和审计。
-
-## 当前成熟度
-
-当前属于开发者/试用版：Stage 1 已完成结构化、审核、冻结和 Excel 导出；Stage 2、Stage 3 仍在开发。安装脚本复制的是仓库内 `distribution/gov-pipeline/` 标准源。
-
-## 案件状态与审计
-
-管理员可随时运行：
-
-```powershell
-python pipeline/src/case_status.py workcases/<case-id>
-python pipeline/src/audit_case.py workcases/<case-id>
-```
-
-前者显示当前 Gate、批准产物和下一步操作；后者校验 Gate 0—3 的哈希链、上游绑定和交付物，并生成 `reviews/case-audit.json` 与 `reviews/case-audit.md`。审计报告通过不等于业务未决问题已经解决，真实交付仍须查看报告中的未决事项。
-
-## 发布前检查
+静态检查：
 
 ```powershell
 .\scripts\doctor.ps1
 python -m unittest discover -s pipeline/tests -v
 ```
 
-`doctor.ps1` 检查文件、安装一致性、Python 和依赖。Cordis 的最终挂载验证需由运行中的 Harness 调用 Preset mount-validation；文件摘要一致不等同于运行时挂载成功。
+运行时需验证：预设清单中 `gov-pipeline` 无 `broken`；使用它创建新会话；该会话能发现并加载 `governance-pipeline`、`responsibility-decomposition`、`digital-support-analysis`、`swimlane-generation`；从不同于仓库的工作目录通过会话的 pwsh 工具运行绝对路径的 `case_status.py`。
+
+本机迁移验收：上述注册、发现和加载通过。新会话默认 `workspace-write` 下出现 Windows `SetNamedSecurityInfoW failed (Win32 5): grantWrite`；同一测试会话明确选用“完全权限”后，`case_status.py` 返回退出码 0 和 Gate 0 状态。**默认沙箱权限问题未修复，bundle 不会自动提升任何业务会话的权限。** 新业务会话遇到相同错误时，应由用户选择权限或另行处理 Windows 文件权限。该运行时权限与业务人工审核不是一回事。
+
+## 人工审核和数据边界
+
+保留 Gate 0—3 的人工明确批准、输入版本和哈希绑定、批准产物不可覆盖、证据分层与审计链规则。“继续”、沉默、上传附件均不视为批准。测试只使用最小合成状态文件，不批准任何业务 Gate，不读写真实案件。
+
+真实政务材料、审核记录和成果存放于受控工作区，不进入公共代码仓库。业务流程仍是：确认职责材料 → 拆解并审核事项 → 分析系统支撑与流程 → 审核泳道逻辑 → 批准后渲染交付。

@@ -1,12 +1,15 @@
-# gov-pipeline Agent Preset. This source is installed under
-# ${DSH_HOME:-$HOME/.dsh}/.agent-presets/gov-pipeline/ by scripts/install.ps1.
+# gov-pipeline per-agent composition, embedded into cordis.patch.yml by scripts/install.ps1.
+# Install the distribution directory as a local bundle; legacy .agent-presets is not used.
 # Host registries, sandbox, approvals, persistence, and model routing remain in
 # the Host composition. This preset contributes only per-agent behavior/tools.
 
 - id: persona
   name: '@deepseek-ai/dsh-persona'
   config:
-    suffix: Your working directory is {{cwd}}.
+    suffix: >-
+      Your working directory is {{cwd}}. The governance Python pipeline repository root is __GOV_PIPELINE_ROOT__.
+      The installed governance skills directory is __GOV_PIPELINE_SKILLS_DIR__.
+      Use absolute script paths under that repository root, not the session cwd, for pipeline commands.
     prefix: >-
       You are a政务数据治理与业务流程梳理 Agent powered by the {{model}} model. For any new or resumed governance case, load the governance-pipeline Skill first. Work through versioned case files and explicit human review gates. Treat structured JSON as the pipeline source of truth; treat Excel, Markdown, Draw.io, and images as review or delivery views. Generate drafts only: never approve a gate on behalf of a human, never overwrite an approved version, and never advance to the next stage without an explicit human approval and a valid decision bound to the current input version and hash. Separate direct evidence, analytical inference, human additions, and unresolved questions. Preserve source text, responsibility boundaries, evidence traceability, and audit history. On resume, inspect case_status and case audit instead of relying on conversation memory.
 
@@ -103,8 +106,8 @@
         provider: fork
         toolName: subagent_fork
         backgroundMode: continuable
-    - id: workflow-worker-thread
-      name: '@deepseek-ai/dsh-workflow-worker-thread'
+    - id: workflow-ptc
+      name: '@deepseek-ai/dsh-workflow-ptc'
       config:
         provider: spawn
     - id: tool-workflow
